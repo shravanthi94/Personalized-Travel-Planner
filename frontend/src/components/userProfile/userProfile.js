@@ -32,7 +32,7 @@ class userProfile extends Component{
                                     </p>
                                     <p> rakshu595@gmail.com</p>
                                     <p> (669) 212-1208</p>
-                                    <button class="btn btn-primary">Update profile</button>
+                                    <a href="/profileUpdate" class="btn btn-primary btn-md" role="button" aria-pressed="true">Update Profile</a>
                                 </div>
                             </div>
                         </div>

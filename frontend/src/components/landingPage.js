@@ -1,64 +1,75 @@
 import React, { Component } from 'react';
 import '../App.css';
 import sfo from "./images/sfo.jpg"
+import sd from "./images/sd.jpeg"
+import la from "./images/la.jpeg"
+import {Button, CardDeck, Card} from 'react-bootstrap'
 import backGroundImage from "./images/backGroundImage.jpg"
-import { Card, CardDeck, Button} from 'react-bootstrap';
+//import { Card, CardDeck, Button} from 'react-bootstrap';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './landingPage.css';
 
 
-var backgroundImagePic = {
-    backgroundImage: `url(${backGroundImage})`,
-    width: "100%",
-    height: "900px"
+// var backgroundImagePic = {
+//     backgroundImage: `url(${backGroundImage})`,
+//     width: "100%",
+//     height: "800px"
 
-}
-
+// }
 
 class landingPage extends Component {
     render() {
-        return(
-            <div style={backgroundImagePic}>
-                <div style= {{width: "100%", height: "5px"}}>
-                <div style={{float:"left", textAlign: "right"}}>
-                        <button style={{display: "inline-block"}}>Home</button>
-                    </div>
-                    <div style={{float:"right", textAlign: "right"}}>
-                        <button style={{display: "inline-block"}}>Login</button>
-                        <button style={{display: "inline-block", marginLeft: "5px"}}>Signup</button>
+        return (
+            <div >
+                <div>
+                    <Button style = {{marginTop:"25px", marginLeft: "10px", backgroundColor: "transparent", border: "none", color: "black"}} variant="link"><i class="fas fa-home"></i> Home </Button> {' '}
+                    <Button href ='/login'  style={{marginTop: "25px",backgroundColor: "lightgrey", marginRight: "10px", marginLeft: "1150px" , border: "1px solid black", color: "black", borderRadius: "5px"}} > Login </Button> {' '}
+                    <Button href ='/userSignup' style={{marginTop:"25px", backgroundColor: "lightgrey", marginRight: "10px", color: "black", border: "1px solid black", borderRadius: "5px"}}> SignUp </Button>
+                </div>
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class= "card text-center shadow">
+                                <div class="overflow">
+                                    <img src= {sfo} alt= "" class="card-img-top" style={{height: "250px"}}/> 
+                                </div>
+                                <div class="card-body text-dark" style={{padding:"3rem 0"}}>
+                                    <h4 class="card-title">San Fransicso</h4>
+                                    <p class="card-text text-secondary"> San Francisco, officially the City and County of San Francisco, is a cultural, commercial, and financial center in Northern California. San Francisco is the 16th most populous city in the United States, and the fourth most populous in California</p> 
+                                    <a href="#" class="btn btn-outline-success"> View Itinerary </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class= "card text-center shadow">
+                                <div class="overflow">
+                                    <img src= {la} alt= ""  class="card-img-top" style={{height: "250px"}}/> 
+                                </div>
+                                <div class="card-body text-dark">
+                                    <h4 class="card-title">Los Angeles</h4>
+                                    <p class="card-text text-secondary"> Los Angeles is a sprawling Southern California city and the center of the nation’s film and television industry. Near its iconic Hollywood sign, studios such as Paramount Pictures, Universal and Warner Brothers offer behind-the-scenes tours.</p> 
+                                    <a href="#" class="btn btn-outline-success"> View Itinerary </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class= "card text-center shadow">
+                                <div class="overflow">
+                                    <img src= {sd} alt= ""  class="card-img-top" style={{height: "250px"}}/> 
+                                </div>
+                                <div class="card-body text-dark">
+                                    <h4 class="card-title">San Diego</h4>
+                                    <p class="card-text text-secondary"> San Diego is a city on the Pacific coast of California known for its beaches, parks and warm climate. Immense Balboa Park is the site of the renowned San Diego Zoo, as well as numerous art galleries, artist studios, museums and gardens.</p> 
+                                    <a href="#" class="btn btn-outline-success"> View Itinerary </a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <div class='container' style = {{marginTop: "30px"}}>
-                        <CardDeck>
-                            <Card>
-                                <Card.Img variant="top" src = {sfo} />
-                        <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer>
-                    </Card>
-                    <Card>
-                                <Card.Img variant="top" src="holder.js/100px160" />
-                        <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </Card.Footer>
-                    </Card>
-                    </CardDeck>
-                 </div>
-             </div>
+            </div>
         )
     }
 }

@@ -1,9 +1,48 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 import Navbar from '../Navbar';
+import axios from 'axios';
 
-const userSignup = () => {
+class userSignup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+
+  onChange = (e) => {
+    console.log(e.target.value)
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
+  onSubmit = (e) => {
+    console.log(this.state.lastName)
+    e.preventDefault();
+        const data = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+        }
+  
+
+  return axios.post('http://localhost:3001/users/signup', data)
+        .then((response) => {
+            if (response.status === 'USER_ADDED') {
+                window.location = "/login"
+            }
+            if (response.status === 'USER_EXISTS') {
+                this.setState({
+                    signupFlag: "Email ID is already registered!"
+                })
+            }
+        });
+      }
+  
+  render(){
   return (
-    <Fragment>
+    <React.Fragment>
       <Navbar />
 
       <div class='container '>
@@ -11,13 +50,14 @@ const userSignup = () => {
           <div class='col'></div>
           <div class='col-5'>
             <h1>Sign Up</h1>
-            <form>
+            <form onSubmit={this.onSubmit}>
               <div class='form-group'>
                 <label for='firstName'>First Name</label>
                 <input
                   type='text'
                   class='form-control'
                   id='firstName'
+                  onChange={this.onChange}
                   placeholder='Enter first name'
                 />
               </div>
@@ -27,6 +67,7 @@ const userSignup = () => {
                   type='text'
                   class='form-control'
                   id='lastName'
+                  onChange={this.onChange}
                   placeholder='Enter last name'
                 />
               </div>
@@ -36,6 +77,7 @@ const userSignup = () => {
                   type='email'
                   class='form-control'
                   id='email'
+                  onChange={this.onChange}
                   placeholder='Enter email'
                 />
                 <small id='emailHelp' class='form-text text-muted'>
@@ -48,19 +90,22 @@ const userSignup = () => {
                   type='password'
                   class='form-control'
                   id='password'
+                  onChange={this.onChange}
                   placeholder='Password'
                 />
               </div>
               <button type='submit' class='btn btn-dark px-5 '>
                 Signup
-              </button>
+              </button><br />
+              <p> Already have an account? <a href='/login'>Sign in</a></p>
             </form>
           </div>
           <div class='col'></div>
         </div>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
+  }
 };
 
 export default userSignup;

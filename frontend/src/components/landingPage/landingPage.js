@@ -21,6 +21,7 @@ class landingPage extends Component {
       <div>
         <div>
           <Button
+            href= "/"
             style={{
               marginTop: '25px',
               marginLeft: '10px',

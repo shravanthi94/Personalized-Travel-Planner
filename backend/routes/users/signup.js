@@ -16,6 +16,7 @@ const router = express.Router();
 // @access Public
 router.post('/', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+  console.log(req.body)
 
   try {
     //  1. Query to check if customer exists

@@ -16,7 +16,7 @@ const router = express.Router();
 // @access Public
 router.post('/', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-  console.log(req.body)
+  console.log(req.body);
 
   try {
     //  1. Query to check if customer exists
@@ -52,6 +52,7 @@ router.post('/', async (req, res) => {
         const payload = {
           user: {
             id: result.insertId,
+            email,
           },
         };
 
@@ -61,7 +62,7 @@ router.post('/', async (req, res) => {
           { expiresIn: 6000000 },
           (err, token) => {
             if (err) throw err;
-            res.json({ token, id: result.insertId });
+            res.status(200).json({ token, id: result.insertId, email });
           },
         );
       });

@@ -8,6 +8,8 @@ const mysql = require('../../config/sqlConnection');
 router.post('/', async (req, res) => {
   const { email, password } = req.body;
 
+  console.log(email, password);
+
   try {
     // 1. Fetch user query
     const query = `SELECT userID, email, password FROM Users WHERE email = '${email}'`;
@@ -40,6 +42,7 @@ router.post('/', async (req, res) => {
       const payload = {
         user: {
           id: result[0].userID,
+          email,
         },
       };
 
@@ -49,7 +52,7 @@ router.post('/', async (req, res) => {
         { expiresIn: 6000000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token, id: result[0].userID });
+          res.status(200).json({ token, id: result[0].userID, email });
         },
       );
     });

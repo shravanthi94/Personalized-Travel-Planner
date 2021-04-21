@@ -8,6 +8,12 @@ import gettingStarted from './gettingStarted/gettingStarted';
 import userProfile from './userProfile/userProfile';
 import profileUpdate from './userProfile/profileUpdate';
 
+import setAuthToken from '../helpers/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 class Main extends Component {
   render() {
     return (

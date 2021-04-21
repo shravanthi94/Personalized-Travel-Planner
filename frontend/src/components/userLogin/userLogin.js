@@ -1,29 +1,10 @@
 import React, { Fragment } from 'react';
-import logo from '../images/logo.jpg';
+import Navbar from '../Navbar';
 
 const userLogin = () => {
   return (
     <Fragment>
-      <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-        <a class='navbar-brand' href='/'>
-          <img src={logo} width='30' height='30' alt='' /> Trip It
-        </a>
-
-        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul class='navbar-nav mr-auto'>
-            <li class='nav-item active'>
-              <a class='nav-link' href='/'>
-                Home <span class='sr-only'>(current)</span>
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a class='nav-link' href='/'>
-                Link
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
 
       <div class='container '>
         <div class='row border p-5 mt-5'>
@@ -53,7 +34,7 @@ const userLogin = () => {
                 />
               </div>
               <button type='submit' class='btn btn-dark px-5 '>
-                Login
+                Signin
               </button>
             </form>
           </div>

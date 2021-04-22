@@ -9,7 +9,6 @@ router.get('/getDetails/:email', (req, res) => {
     const sql = `SELECT * FROM Users WHERE email = '${req.params.email}'`
     
     mysql.query(sql, (err, result) => {
-    console.log(result[0][0])
       if (err) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Some error has occured');
@@ -32,7 +31,6 @@ router.get('/getDetails/:email', (req, res) => {
         res.end('Some error has occured');
       }
       if (result && result.affectedRows > 0) {
-        console.log("Hiiiiii")
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('USER_UPDATED');
       }

@@ -7,7 +7,8 @@ const Navbar = () => {
     <Fragment>
       <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
         <a class='navbar-brand' href='/'>
-          <img src={logo} width='30' height='30' alt='' /> Trip It
+          {/* <img src={logo} width='30' height='30' alt='' /> Trip It */}
+          <i class='fas fa-route'></i> Trip It
         </a>
 
         <div class='collapse navbar-collapse' id='navbarSupportedContent'>

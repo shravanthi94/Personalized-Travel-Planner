@@ -38,7 +38,7 @@ class userLogin extends Component {
           localStorage.setItem('token', data.token);
           localStorage.setItem('userID', data.id);
           localStorage.setItem('email', data.email);
-          window.location = '/';
+          window.location = '/home';
         }
       })
       .catch((error) => {

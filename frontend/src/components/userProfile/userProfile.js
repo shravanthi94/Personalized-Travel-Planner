@@ -7,10 +7,10 @@ import bg from '../images/background.jpeg';
 import './userProfile.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUserDetails, updateProfilePic} from '../../store/actions/userProfileAction';
+import { getUserDetails} from '../../store/actions/userProfileAction';
 import Navbar from '../Navbar';
 import axios from 'axios';
-import connectionServer from '../../helpers/constants';
+import {BACKEND_URL} from '../../helpers/constants';
 
 var backgroundImagePic = {
     backgroundImage: `url(${bg})`
@@ -47,12 +47,10 @@ class userProfile extends Component{
             'content-type': 'multipart/form-data',
           }
         };
-        axios.post(`${connectionServer}/users/image`, formData, uploadConfig)
+        axios.post(`${BACKEND_URL}/users/image`, formData, uploadConfig)
         .then(response => {
             alert("Image uploaded successfully!");
-            this.setState({
-                user_image: response.data
-              });
+            window.location = "/userProfile"
             })
             .catch(err => {
             console.log("Error");
@@ -61,6 +59,8 @@ class userProfile extends Component{
 
     
     render() {
+        let imgSrc;
+        imgSrc = `${BACKEND_URL}/users/image/${this.props.user.image}`;
         return (
             <React.Fragment>
                 <Navbar/>  
@@ -70,7 +70,7 @@ class userProfile extends Component{
                                 <div class="col-md-4">
                                     <div class="card mb-3">
                                         <div class="card-body text-center">
-                                            <img src = {pp} class="card-img-top rounded-circle" style={{height: "400px"}}/>
+                                            <img src = {imgSrc} class="card-img rounded-circle" style={{height: "400px"}}/>
                                             <label for='profileImage'>
                                                 <a class='btn btn-secondary btn-sm btn-rounded'>
                                                 <i class='fas fa-camera'></i></a>
@@ -145,7 +145,6 @@ class userProfile extends Component{
 
 userProfile.propTypes = {
     getUserDetails: PropTypes.func.isRequired,
-    updateProfilePic: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     status: PropTypes.object.isRequired
   };
@@ -155,4 +154,4 @@ userProfile.propTypes = {
     status: state.userProfile.status
   });
   
-  export default connect(mapStateToProps, { getUserDetails, updateProfilePic })(userProfile);
+  export default connect(mapStateToProps, { getUserDetails })(userProfile);

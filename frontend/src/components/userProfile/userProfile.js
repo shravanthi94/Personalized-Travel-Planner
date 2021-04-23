@@ -7,9 +7,10 @@ import bg from '../images/background.jpeg';
 import './userProfile.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUserDetails } from '../../store/actions/userProfileAction';
+import { getUserDetails, updateProfilePic} from '../../store/actions/userProfileAction';
 import Navbar from '../Navbar';
-
+import axios from 'axios';
+import connectionServer from '../../helpers/constants';
 
 var backgroundImagePic = {
     backgroundImage: `url(${bg})`
@@ -19,12 +20,44 @@ class userProfile extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            fileText: ''
         };
     }
 
     componentWillMount() {
         this.props.getUserDetails();
     }
+
+    onImageChange = (e) => {
+        if(e.target.files && e.target.files[0]) {
+            console.log(e.target.files[0].name)
+          this.setState({
+            file: e.target.files[0],
+            fileText: e.target.files[0].name
+          });
+        }
+      }
+
+      handleImageUpload = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('image', this.state.file);
+        const uploadConfig = {
+          headers: {
+            'content-type': 'multipart/form-data',
+          }
+        };
+        axios.post(`${connectionServer}/users/image`, formData, uploadConfig)
+        .then(response => {
+            alert("Image uploaded successfully!");
+            this.setState({
+                user_image: response.data
+              });
+            })
+            .catch(err => {
+            console.log("Error");
+        });
+      }
 
     
     render() {
@@ -36,8 +69,15 @@ class userProfile extends Component{
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card mb-3">
-                                        <div class="card-body text-center"><img src = {pp} class="card-img-top rounded-circle" style={{height: "400px"}}/>
-                                            
+                                        <div class="card-body text-center">
+                                            <img src = {pp} class="card-img-top rounded-circle" style={{height: "400px"}}/>
+                                            <label for='profileImage'>
+                                                <a class='btn btn-secondary btn-sm btn-rounded'>
+                                                <i class='fas fa-camera'></i></a>
+                                            </label>
+                                            <input type='file' name='profileImage' id='profileImage' style={{ display: 'none'}} value='' onChange = {this.onImageChange}></input>{' '}
+                                            <a class="link" onClick={this.handleImageUpload}> Upload</a>{' '}
+                                            {/* <a class="link" onClick={this.handleUpdate}> Save </a> */}
                                             <h4 class="card-title mt-3"> {this.props.user.firstName} {this.props.user.lastName}</h4>
                                             <p>
                                                 {this.props.user.headline}
@@ -105,11 +145,14 @@ class userProfile extends Component{
 
 userProfile.propTypes = {
     getUserDetails: PropTypes.func.isRequired,
+    updateProfilePic: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
+    status: PropTypes.object.isRequired
   };
   
   const mapStateToProps = (state) => ({
-    user: state.userProfile.user
+    user: state.userProfile.user,
+    status: state.userProfile.status
   });
   
-  export default connect(mapStateToProps, { getUserDetails })(userProfile);
+  export default connect(mapStateToProps, { getUserDetails, updateProfilePic })(userProfile);

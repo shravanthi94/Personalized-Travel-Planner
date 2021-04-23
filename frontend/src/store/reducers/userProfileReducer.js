@@ -1,6 +1,7 @@
 import {
     GET_USER_DETAILS,
-    UPDATE_USER_DETAILS
+    UPDATE_USER_DETAILS,
+    UPDATE_PROFILEPIC
 } from '../actions/types'
 
 const initialState = {
@@ -15,6 +16,8 @@ export default (state = initialState, action) => {
             return { ...state, user: action.payload};
         case UPDATE_USER_DETAILS:
                 return {...state, status: action.payload};
+        case UPDATE_PROFILEPIC:
+            return {...state, status: action.payload};
         default:
             return state;
     }

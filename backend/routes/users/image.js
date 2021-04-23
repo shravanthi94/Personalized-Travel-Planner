@@ -23,6 +23,7 @@ const useruploads = multer({
 }).single('image');
 
 router.post('/', auth, async (req, res) => {
+  console.log(req)
   useruploads(req, res, async (err) => {
     if (!err) {
       const imageQuery = `UPDATE Users SET

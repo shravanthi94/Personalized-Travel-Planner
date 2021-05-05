@@ -5,6 +5,7 @@ const userSignup = require('./routes/users/signup');
 const userLogin = require('./routes/users/login');
 const getUserDetails = require('./routes/users/userProfile');
 const userImage = require('./routes/users/image');
+const recommendation = require('./routes/recommendations/recommendation');
 
 // Connect to mongoDB database
 connectDB();
@@ -19,6 +20,8 @@ app.use('/users', getUserDetails);
 
 //User - Image
 app.use('/users/image', userImage);
+// Recommendations
+app.use('/recommendations', recommendation);
 
 const PORT = process.env.PORT || 3001;
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pp from '../images/pp.jpeg';
+// import pp from '../images/pp.jpeg';
 import sfo from '../images/sfo.jpg';
 import la from '../images/la.jpeg';
 import sd from '../images/sd.jpeg';

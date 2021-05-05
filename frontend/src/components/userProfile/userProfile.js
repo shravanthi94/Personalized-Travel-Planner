@@ -95,7 +95,8 @@ class userProfile extends Component{
 
                                         <hr class="my-4"/>
                                         <h5>Looking for some new places top explore??? </h5>
-                                        <button class="btn btn-primary btn-lg">Get new itinerary</button>
+                                        <a href = "/gettingStarted" type = "button" class="btn btn-primary"> Get new itinerary</a>
+                                        {/* <button href = "/gettingStarted" xclass="btn btn-primary btn-lg">Get new itinerary</button> */}
                                     </div>
 
                                     <div class="card-columns">

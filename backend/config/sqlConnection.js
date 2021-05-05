@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 
-var mysqlConnection = mysql.createConnection({
+var mysqlConnection = mysql.createPool({
+  connectionLimit: 500,
   host: 'travelplanner.c2dj6ypzqx9e.us-west-1.rds.amazonaws.com',
   user: 'admin',
   password: 'admin123',
@@ -8,7 +9,7 @@ var mysqlConnection = mysql.createConnection({
   insecureAuth: true,
 });
 
-mysqlConnection.connect((err) => {
+mysqlConnection.getConnection((err) => {
   if (!err) {
     console.log('Connected to SQL Database');
   } else {

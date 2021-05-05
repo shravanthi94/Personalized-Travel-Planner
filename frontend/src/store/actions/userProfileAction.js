@@ -1,4 +1,4 @@
-import { GET_USER_DETAILS, UPDATE_USER_DETAILS } from './types';
+import { GET_USER_DETAILS, UPDATE_USER_DETAILS, VIEW_RECO } from './types';
 import { BACKEND_URL } from '../../helpers/constants';
 import axios from 'axios';
 
@@ -32,6 +32,29 @@ export const updateUserDetails = (userProfileData) => (dispatch) => {
       if (error.response && error.response.data) {
         return dispatch({
           type: UPDATE_USER_DETAILS,
+          payload: error.response.data,
+        });
+      }
+      return;
+    });
+};
+
+export const viewRecommendation = (userInputData) => (dispatch) => {
+  axios
+    .post(
+      `${BACKEND_URL}/recommendations/view`,
+      userInputData,
+    )
+    .then((response) =>
+      dispatch({
+        type: VIEW_RECO,
+        payload: response.data,
+      }),
+    )
+    .catch((error) => {
+      if (error.response && error.response.data) {
+        return dispatch({
+          type: VIEW_RECO,
           payload: error.response.data,
         });
       }

@@ -17,8 +17,25 @@ var destinations = [
 distance.key('AIzaSyC9YmvT5MgBbbaBSoO0m_h9zGHHK9s_W2Y');
 distance.units('imperial');
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
+
+  let options = {
+    mode: 'text',
+    pythonPath: 'python3',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
+    args: [req.body.freeTextInput]
+  };
+
+  // console.log(req.body.freeTextInput)
+
+  PythonShell.run('POI_Nearby_Recc.py', options, function (err, results) {
+    if (err) throw err;
+    console.log(results[0]);
+    res.end(results[0]);
+   });
   const matrix = [];
+  
   try {
     distance.matrix(origins, destinations, (err, distances) => {
       if (err) {

@@ -40,8 +40,8 @@ router.post('/view', auth, async (req, res) => {
 
   PythonShell.run('NLP_and_Recc_functions.py', options, function (err, results) {
     if (err) throw err;
-    console.log(results[0]);
-    res.end(results[0]);
+    var result = {tripType: results[0], places: results[1] }
+    res.end(JSON.stringify(result));
    });
 });
 

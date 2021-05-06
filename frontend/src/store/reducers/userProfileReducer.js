@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         case UPDATE_PROFILEPIC:
             return {...state, status: action.payload};
         case VIEW_RECO:
-            return{...state, user: action.payload};
+            return{...state,user: action.payload};
         default:
             return state;
     }

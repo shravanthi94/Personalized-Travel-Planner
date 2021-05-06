@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 
-const Recommendation = ({ userProfile: { user } }) => {
+const Recommendation = ({ userProfile: { user:{places} } }) => {
   const displayPOI = () => {
-    var temp = user.substring(1, user.length - 1);
+    var temp = places.substring(1, places.length - 1);
     const cleaned = temp.split(',');
 
   for (var i = 0; i < cleaned.length; i++) {
@@ -28,7 +28,7 @@ const Recommendation = ({ userProfile: { user } }) => {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href='/' class='btn btn-primary' onSubmit = {this.handleSubmit}>
+            <a href='/' class='btn btn-primary'>
               View Itinerary
             </a>
           </div>

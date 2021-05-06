@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
+const Itinerary = require('../../models/ItineraryModel');
 
 var distance = require('google-distance-matrix');
 var solver = require('node-tspsolver');
@@ -44,25 +45,61 @@ router.get('/', async (req, res) => {
         }
       }
       console.log('Result IN: ', matrix);
-      solver.solveTsp(matrix, false, {}).then(function (result) {
-        console.log(result); // result is an array of indices specifying the route.
-      });
+      // Itinerary Generator
+      solver
+        .solveTsp(matrix, false, {})
+        .then(function (result) {
+          console.log(result); // result is an array of indices specifying the route.
+          const itin = [];
+          for (var i = 0; i < result.length; i++) {
+            var obj = {
+              name: origins[result[i]],
+              distance: 0,
+            };
+            if (i !== 0) {
+              obj.distance = matrix[result[i - 1]][result[i]];
+            }
+            itin.push(obj);
+          }
+          console.log(itin);
+          res.send(JSON.stringify(itin));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
-
-    console.log('Result OUT: ', matrix);
-    res.send('Success');
   } catch (error) {
     console.log(err.message);
     res.status(500).send('Server Error');
   }
 });
 
+// Save an itinerary
+router.post('/save', auth, async (req, res) => {
+  try {
+    const { userID, itinerary } = req.body;
+    const newItin = new Itinerary({
+      userID,
+      itinerary,
+    });
+    await newItin.save();
+    res.send('Itinerary Saved');
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+// Get Saved Itineraries of a user
+router.get('/:userID', auth, async (req, res) => {
+  try {
+    const userID = req.params.userID;
+    const result = await Itinerary.find({ userID: userID });
+    res.status(200).send(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
-
-/*
-arr1 = [1,2];
-arr2 = [10,30];
-
-1 -> 10, 30
-2 -> 10, 30
-*/

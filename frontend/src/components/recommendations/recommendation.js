@@ -12,6 +12,12 @@ const Recommendation = ({ userProfile: { user } }) => {
   }
 
   const displayPOI = () => {
+    var temp = user.substring(1, user.length - 1);
+    const cleaned = temp.split(',');
+
+    for (var i = 0; i < cleaned.length; i++) {
+      cleaned[i] = cleaned[i].replace(/'/g, '').trim();
+    }
     return cleaned.map((poi) => {
       let substrings = poi.toLowerCase().split(' ');
       let imgName = substrings.join('_');
@@ -53,6 +59,7 @@ const Recommendation = ({ userProfile: { user } }) => {
           </div>
         </div>
       </div>
+      {/* <h1>Hello</h1> */}
     </Fragment>
   );
 };

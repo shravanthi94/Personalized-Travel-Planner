@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Recommendation = require('../../models/RecommendationModel');
 const auth = require('../../middleware/auth');
+const PythonShell = require('python-shell').PythonShell;
+// const spacyNLP = require("spacy-nlp");
+// var serverPromise = spacyNLP.server({ port: process.env.IOPORT });
 
 // router.post('/', auth, async (req, res) => {
 //   try {
@@ -25,23 +28,25 @@ const auth = require('../../middleware/auth');
 // });
 
 router.post('/view', auth, async (req, res) => {
-  args1 = req.body.freeTextInput;
-  //   const { spawn } = require('child_process');
-  //   const pyProg = spawn('python', ['backend/MLFiles/dummy.py', args1]);
+  let options = {
+    mode: 'text',
+    pythonPath: 'python3',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: '/Users/Chandu/Desktop/shared_files',
+    args: [req.body.freeTextInput],
+  };
 
-  //   pyProg.stdout.on('data', function (data) {
-  //     console.log(data.toString());
-  //     res.send(['Los Angeles', 'Napa Valley', 'Santa Barbara']);
-  //     res.end('end');
-  //   });
-  //   const result = JSON.stringify([
-  //     'Los Angeles',
-  //     'Napa Valley',
-  //     'Santa Barbara',
-  //   ]);
+  // console.log(req.body.freeTextInput)
 
-  const result = `"['Los Angeles', 'Napa Valley', 'Santa Barbara']"`;
-  res.end(result);
+  PythonShell.run(
+    'NLP_and_Recc_functions.py',
+    options,
+    function (err, results) {
+      if (err) throw err;
+      console.log(results[0]);
+      res.end(results[0]);
+    },
+  );
 });
 
 module.exports = router;

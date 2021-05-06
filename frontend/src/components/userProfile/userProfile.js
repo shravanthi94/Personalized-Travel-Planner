@@ -68,8 +68,8 @@ class userProfile extends Component {
         <div>
           <div class='container-fluid'>
             <div class='row'>
-              <div class='col-3 pl-4'>
-                <div class='card mb-3'>
+              <div class='col-3 pl-4' >
+                <div class='card mb-3' style={{backgroundColor: "burlywood"}}>
                   <div class='card-body text-center'>
                     <img
                       src={imgSrc}
@@ -113,18 +113,24 @@ class userProfile extends Component {
                   </div>
                 </div>
               </div>
-              <div class='col-9 px-5'>
+              <div class='col-9 px-6'>
                 <div
                   class='jumbotron text-center mb-5'
-                  style={backgroundImagePic}
+                  style={{backgroundColor: "burlywood"}}
+              
                 >
                   <h3 class='display-4'>View your saved Itineraries!!!</h3>
 
                   <hr class='my-4' />
                   <h5>Looking for some new places top explore??? </h5>
-                  <button class='btn btn-primary btn-lg'>
-                    Get new itinerary
-                  </button>
+                  <a
+                      href='/gettingStarted'
+                      class='btn btn-primary btn-md'
+                      role='button'
+                      aria-pressed='true'
+                    >
+                      Get new itinerary
+                    </a>
                 </div>
 
                 <div class='card-columns'>

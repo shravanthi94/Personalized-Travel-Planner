@@ -24,6 +24,7 @@ class gettingStarted extends Component {
   onSubmit = (e) => {
     //prevent page from refresh
     e.preventDefault();
+    localStorage.setItem("noDays", this.state.noDays);
     const data = {
       noDays: e.target.noDays.value,
       freeTextInput: e.target.freeTextInput.value,

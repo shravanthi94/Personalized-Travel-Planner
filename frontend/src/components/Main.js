@@ -7,6 +7,7 @@ import userSignup from './userSignup/userSignup';
 import gettingStarted from './gettingStarted/gettingStarted';
 import userProfile from './userProfile/userProfile';
 import profileUpdate from './userProfile/profileUpdate';
+import recommendation from './recommendations/recommendation';
 
 import setAuthToken from '../helpers/setAuthToken';
 
@@ -25,6 +26,7 @@ class Main extends Component {
         <Route exact path='/gettingStarted' component={gettingStarted} />
         <Route exact path='/userProfile' component={userProfile} />
         <Route exact path='/profileUpdate' component={profileUpdate} />
+        <Route exact path='/recommendations' component={recommendation} />
       </div>
     );
   }

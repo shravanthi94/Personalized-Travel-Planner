@@ -26,14 +26,20 @@ const auth = require('../../middleware/auth');
 
 router.post('/view', auth, async (req, res) => {
   args1 = req.body.freeTextInput;
-  const { spawn } = require('child_process');
-  const pyProg = spawn('python', ['backend/MLFiles/dummy.py', args1]);
+  //   const { spawn } = require('child_process');
+  //   const pyProg = spawn('python', ['backend/MLFiles/dummy.py', args1]);
 
-  pyProg.stdout.on('data', function (data) {
-    console.log(data.toString());
-    res.status(200).send(['Los Angeles', 'Napa Valley', 'Santa Barbara']);
-    res.end('end');
-  });
+  //   pyProg.stdout.on('data', function (data) {
+  //     console.log(data.toString());
+  //     res.send(['Los Angeles', 'Napa Valley', 'Santa Barbara']);
+  //     res.end('end');
+  //   });
+  const result = JSON.stringify([
+    'Los Angeles',
+    'Napa Valley',
+    'Santa Barbara',
+  ]);
+  res.end(result);
 });
 
 module.exports = router;

@@ -113,6 +113,7 @@ class userSignup extends Component {
                   Signup
                 </button>
                 <br />
+                <p> Already have an account? <a href="/login">Signin</a></p>
                 <div>{errors}</div>
               </form>
             </div>

@@ -6,6 +6,7 @@ const userLogin = require('./routes/users/login');
 const getUserDetails = require('./routes/users/userProfile');
 const userImage = require('./routes/users/image');
 const recommendation = require('./routes/recommendations/recommendation');
+const itinerary = require('./routes/itinerary/itinerary');
 
 // Connect to mongoDB database
 connectDB();
@@ -22,6 +23,8 @@ app.use('/users', getUserDetails);
 app.use('/users/image', userImage);
 // Recommendations
 app.use('/recommendations', recommendation);
+// Itinerary
+app.use('/itinerary', itinerary);
 
 const PORT = process.env.PORT || 3001;
 

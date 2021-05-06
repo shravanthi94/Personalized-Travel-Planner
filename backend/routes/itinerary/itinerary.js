@@ -45,6 +45,7 @@ router.get('/', async (req, res) => {
         }
       }
       console.log('Result IN: ', matrix);
+
       // Itinerary Generator
       solver
         .solveTsp(matrix, false, {})

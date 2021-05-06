@@ -34,11 +34,13 @@ router.post('/view', auth, async (req, res) => {
   //     res.send(['Los Angeles', 'Napa Valley', 'Santa Barbara']);
   //     res.end('end');
   //   });
-  const result = JSON.stringify([
-    'Los Angeles',
-    'Napa Valley',
-    'Santa Barbara',
-  ]);
+  //   const result = JSON.stringify([
+  //     'Los Angeles',
+  //     'Napa Valley',
+  //     'Santa Barbara',
+  //   ]);
+
+  const result = `"['Los Angeles', 'Napa Valley', 'Santa Barbara']"`;
   res.end(result);
 });
 

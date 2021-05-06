@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 
 const Recommendation = ({ userProfile: { user } }) => {
+  var temp = user.substring(1, user.length - 1);
+  const cleaned = temp.split(',');
+
+  for (var i = 0; i < cleaned.length; i++) {
+    cleaned[i] = cleaned[i].replace(/'/g, '').trim();
+  }
+
   const displayPOI = () => {
-    return user.map((poi) => {
+    return cleaned.map((poi) => {
       let substrings = poi.toLowerCase().split(' ');
       let imgName = substrings.join('_');
       console.log(imgName); // los_angeles
@@ -13,8 +20,8 @@ const Recommendation = ({ userProfile: { user } }) => {
         <div class='card px-3' style={{ width: '18rem' }}>
           <img
             class='card-img-top'
-            src={`images/${imgName}.jpg`}
-            alt={imgName}
+            src={`images/${poi.toLowerCase().split(' ').join('_')}.jpg`}
+            alt={poi.toLowerCase().split(' ').join('_')}
           />
           <div class='card-body'>
             <h5 class='card-title'>{poi}</h5>

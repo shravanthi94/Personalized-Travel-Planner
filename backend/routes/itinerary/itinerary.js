@@ -17,7 +17,9 @@ var destinations = [
 distance.key('AIzaSyC9YmvT5MgBbbaBSoO0m_h9zGHHK9s_W2Y');
 distance.units('imperial');
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
+  console.log('Reached Itinerary');
+  const { poi, days } = req.body;
   const matrix = [];
   try {
     distance.matrix(origins, destinations, (err, distances) => {

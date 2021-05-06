@@ -1,9 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
+import { viewItinerary } from '../../store/actions/userProfileAction';
 
-const Recommendation = ({ userProfile: { user } }) => {
+const Recommendation = ({ userProfile: { user }, viewItinerary }) => {
+  let [selectedPoi, setselectedPoi] = useState('');
+
+  const days = localStorage.getItem('noDays');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    viewItinerary(selectedPoi, days);
+  };
+
   var temp = user.substring(1, user.length - 1);
   const cleaned = temp.split(',');
 
@@ -23,21 +34,45 @@ const Recommendation = ({ userProfile: { user } }) => {
       let imgName = substrings.join('_');
       console.log(imgName); // los_angeles
       return (
-        <div class='card px-3' style={{ width: '18rem' }}>
+        <div class='card px-2 mx-2' style={{ width: '18rem' }}>
           <img
             class='card-img-top'
             src={`images/${poi.toLowerCase().split(' ').join('_')}.jpg`}
             alt={poi.toLowerCase().split(' ').join('_')}
           />
           <div class='card-body'>
-            <h5 class='card-title'>{poi}</h5>
+            <h5 class='card-title' name='poi' value={poi}>
+              {poi}
+            </h5>
             <p class='card-text'>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href='/' class='btn btn-primary'>
-              View Itinerary
-            </a>
+            <input
+              className='d-inline'
+              type='checkbox'
+              name='selectedPoi'
+              value={selectedPoi}
+              id='forItem'
+              onClick={(e) => setselectedPoi(poi)}
+            />
+            <p className='d-inline ml-1'>Select {poi}</p>
+            <br /> <br />
+            <button
+              type='button'
+              class='btn btn-primary btn-sm'
+              onClick={(e) => handleSubmit(e)}
+            >
+              Generate Itinerary
+            </button>
+            <br /> <br />
+            <Link
+              to='/itinerary'
+              type='button'
+              class='btn btn-secondary btn-sm'
+            >
+              <i class='fas fa-plane-departure'></i> View Itinerary
+            </Link>
           </div>
         </div>
       );
@@ -65,10 +100,11 @@ const Recommendation = ({ userProfile: { user } }) => {
 };
 
 Recommendation.propTypes = {
+  viewItinerary: PropTypes.func.isRequired,
   userProfile: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   userProfile: state.userProfile,
 });
 
-export default connect(mapStateToProps, {})(Recommendation);
+export default connect(mapStateToProps, { viewItinerary })(Recommendation);

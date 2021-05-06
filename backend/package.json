@@ -27,6 +27,9 @@
     "node-gyp": "^8.0.0",
     "node-tspsolver": "^1.0.2",
     "path": "^0.12.7",
-    "rebuild": "^0.1.2"
+    "python-shell": "^3.0.0",
+    "rebuild": "^0.1.2",
+    "spacy": "0.0.4",
+    "spacy-nlp": "^1.0.11"
   }
 }

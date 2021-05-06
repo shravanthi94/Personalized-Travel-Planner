@@ -5,7 +5,13 @@ import Navbar from '../Navbar';
 
 const Recommendation = ({ userProfile: { user } }) => {
   const displayPOI = () => {
-    return user.map((poi) => {
+    var temp = user.substring(1, user.length - 1);
+    const cleaned = temp.split(',');
+
+  for (var i = 0; i < cleaned.length; i++) {
+    cleaned[i] = cleaned[i].replace(/'/g, '').trim();
+  }
+    return cleaned.map((poi) => {
       let substrings = poi.toLowerCase().split(' ');
       let imgName = substrings.join('_');
       console.log(imgName); // los_angeles
@@ -22,7 +28,7 @@ const Recommendation = ({ userProfile: { user } }) => {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href='/' class='btn btn-primary'>
+            <a href='/' class='btn btn-primary' onSubmit = {this.handleSubmit}>
               View Itinerary
             </a>
           </div>
@@ -46,6 +52,7 @@ const Recommendation = ({ userProfile: { user } }) => {
           </div>
         </div>
       </div>
+    {/* <h1>Hello</h1> */}
     </Fragment>
   );
 };

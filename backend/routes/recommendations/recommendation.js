@@ -7,8 +7,6 @@ const PythonShell = require('python-shell').PythonShell;
 // /Users/rakshithasathyakumar/Desktop/shared_files
 // /Users/Chandu/Desktop/shared_files
 
-
-
 // const spacyNLP = require("spacy-nlp");
 // var serverPromise = spacyNLP.server({ port: process.env.IOPORT });
 
@@ -38,17 +36,21 @@ router.post('/view', auth, async (req, res) => {
     mode: 'text',
     pythonPath: 'python3',
     pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
+    scriptPath: '/Users/Chandu/Desktop/shared_files',
     args: [req.body.freeTextInput],
   };
 
   // console.log(req.body.freeTextInput)
 
-  PythonShell.run('NLP_and_Recc_functions.py', options, function (err, results) {
-    if (err) throw err;
-    var result = {tripType: results[0], places: results[1] }
-    res.end(JSON.stringify(result));
-   });
+  PythonShell.run(
+    'NLP_and_Recc_functions.py',
+    options,
+    function (err, results) {
+      if (err) throw err;
+      var result = { tripType: results[0], places: results[1] };
+      res.end(JSON.stringify(result));
+    },
+  );
 });
 
 module.exports = router;

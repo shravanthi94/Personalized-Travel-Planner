@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
   var temp = req.body.tripType.substring(1, req.body.tripType.length - 1);
   const nlp = temp.split(',');
 
-
   for (var i = 0; i < nlp.length; i++) {
     nlp[i] = nlp[i].replace(/'/g, '').trim();
   }
@@ -33,20 +32,19 @@ router.post('/', async (req, res) => {
     mode: 'text',
     pythonPath: 'python3',
     pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
-    args: [parseInt(req.body.days), req.body.poi, nlp]
+    scriptPath: '/Users/Chandu/Desktop/shared_files',
+    args: [parseInt(req.body.days), req.body.poi, nlp],
   };
 
   PythonShell.run('POI_Nearby_Recc.py', options, function (err, results) {
     if (err) throw err;
     console.log(results);
     // res.end(results[0]);
-   });
-
+  });
 
   // console.log('Reached Itinerary');
   const matrix = [];
-  
+
   try {
     distance.matrix(origins, destinations, (err, distances) => {
       if (err) {

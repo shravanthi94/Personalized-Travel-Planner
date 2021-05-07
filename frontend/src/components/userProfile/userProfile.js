@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 // import pp from '../images/pp.jpeg';
 import sfo from '../images/sfo.jpg';
 import la from '../images/la.jpeg';
 import sd from '../images/sd.jpeg';
-import bg from '../images/background.jpeg';
+// import bg from '../images/background.jpeg';
 import './userProfile.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,9 +13,9 @@ import Navbar from '../Navbar';
 import axios from 'axios';
 import { BACKEND_URL } from '../../helpers/constants';
 
-var backgroundImagePic = {
-  backgroundImage: `url(${bg})`,
-};
+// var backgroundImagePic = {
+//   backgroundImage: `url(${bg})`,
+// };
 
 class userProfile extends Component {
   constructor(props) {
@@ -98,6 +99,7 @@ class userProfile extends Component {
                       class='btn'
                       onClick={this.handleImageUpload}
                       style={{ backgroundColor: '#583d72', color: 'white' }}
+                      href='/'
                     >
                       {' '}
                       Save
@@ -146,6 +148,7 @@ class userProfile extends Component {
                       src={sfo}
                       class='card-img'
                       style={{ height: '150px', objectFit: 'cover' }}
+                      alt='img'
                     />
 
                     <div class='card-body p-2 position-relative'>
@@ -170,6 +173,7 @@ class userProfile extends Component {
                       src={la}
                       class='card-img'
                       style={{ height: '150px', objectFit: 'cover' }}
+                      alt='img'
                     />
 
                     <div class='card-body p-2 position-relative'>
@@ -194,6 +198,7 @@ class userProfile extends Component {
                       src={sd}
                       class='card-img'
                       style={{ height: '150px', objectFit: 'cover' }}
+                      alt='img'
                     />
 
                     <div class='card-body p-2 position-relative'>

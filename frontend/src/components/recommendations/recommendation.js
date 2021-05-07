@@ -47,17 +47,17 @@ const Recommendation = ({
 
       return (
         <div class='card w-75  mx-2' style={{ width: '18rem' }}>
-          {poi == 'Napa' ? (
+          {poi === 'Napa' ? (
             <img class='card-img-top' src={napa} alt='img' />
           ) : (
             ''
           )}
-          {poi == 'Los Angeles' ? (
+          {poi === 'Los Angeles' ? (
             <img class='card-img-top' src={los_angeles} alt='img' />
           ) : (
             ''
           )}
-          {poi == 'Santa Barbara' ? (
+          {poi === 'Santa Barbara' ? (
             <img class='card-img-top' src={santa_barbara} alt='img' />
           ) : (
             ''

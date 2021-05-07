@@ -155,7 +155,7 @@ const Itinerary = ({ userProfile: { itin, dayItin }, viewDayItinerary }) => {
         <br />
         <div style={{ marginLeft: '25%' }}>{displayButtons()}</div>
         <br /> <br />
-        {buttonPressed == true ? (
+        {buttonPressed === true ? (
           <Fragment>
             <div style={{ marginLeft: '12%' }} class='mb-4'>
               <div

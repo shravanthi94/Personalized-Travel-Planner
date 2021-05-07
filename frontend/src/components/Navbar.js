@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './images/logo.jpg';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
 class Navbar extends Component {
@@ -50,7 +49,7 @@ class Navbar extends Component {
                 <a class='dropdown-item' href='/userProfile'>
                   Profile
                 </a>
-                <a class='dropdown-item' href='#' onClick={this.handleLogout}>
+                <a class='dropdown-item' href='/' onClick={this.handleLogout}>
                   Logout
                 </a>
               </div>

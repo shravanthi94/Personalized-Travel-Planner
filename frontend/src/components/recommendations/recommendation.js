@@ -5,17 +5,22 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import { viewItinerary } from '../../store/actions/userProfileAction';
 
-const Recommendation = ({ userProfile: { user }, viewItinerary }) => {
+const Recommendation = ({
+  userProfile: {
+    user: { places, tripType },
+  },
+  viewItinerary,
+}) => {
   let [selectedPoi, setselectedPoi] = useState('');
 
   const days = localStorage.getItem('noDays');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    viewItinerary(selectedPoi, days);
+    viewItinerary(selectedPoi, days, tripType);
   };
 
-  var temp = user.substring(1, user.length - 1);
+  var temp = places.substring(1, places.length - 1);
   const cleaned = temp.split(',');
 
   for (var i = 0; i < cleaned.length; i++) {
@@ -23,7 +28,7 @@ const Recommendation = ({ userProfile: { user }, viewItinerary }) => {
   }
 
   const displayPOI = () => {
-    var temp = user.substring(1, user.length - 1);
+    var temp = places.substring(1, places.length - 1);
     const cleaned = temp.split(',');
 
     for (var i = 0; i < cleaned.length; i++) {

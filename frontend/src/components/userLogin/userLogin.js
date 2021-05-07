@@ -93,7 +93,11 @@ class userLogin extends Component {
                     placeholder='Password'
                   />
                 </div>
-                <button type='submit' class='btn btn-dark px-5 '>
+                <button
+                  type='submit'
+                  class='btn px-5 '
+                  style={{ backgroundColor: '#583d72', color: 'white' }}
+                >
                   Signin
                 </button>
                 <br />

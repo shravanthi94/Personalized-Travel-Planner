@@ -24,7 +24,7 @@ class gettingStarted extends Component {
   onSubmit = (e) => {
     //prevent page from refresh
     e.preventDefault();
-    localStorage.setItem("noDays", this.state.noDays);
+    localStorage.setItem('noDays', this.state.noDays);
     const data = {
       noDays: e.target.noDays.value,
       freeTextInput: e.target.freeTextInput.value,
@@ -120,11 +120,19 @@ class gettingStarted extends Component {
                   rows='3'
                 ></textarea>
               </div>
-              <button type='submit' class='btn btn-primary'>
+              <button
+                type='submit'
+                class='btn btn-primary'
+                style={{ backgroundColor: '#583d72' }}
+              >
                 Submit
               </button>
               <br />
-              <Link to='/recommendations' class='btn btn-primary mt-5'>
+              <Link
+                to='/recommendations'
+                class='btn btn-primary mt-5'
+                style={{ backgroundColor: '#583d72' }}
+              >
                 View Recommendations
               </Link>
             </form>

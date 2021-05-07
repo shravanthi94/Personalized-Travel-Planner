@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
     for (var i = 0; i < dest.length; i++) {
       dest[i] = dest[i].replace(/'/g, '').trim();
     }
-    res.send(dest);
+    res.end(JSON.stringify(dest));
   });
 });
 

@@ -109,11 +109,18 @@ class userSignup extends Component {
                     placeholder='Password'
                   />
                 </div>
-                <button type='submit' class='btn btn-dark px-5 '>
+                <button
+                  type='submit'
+                  class='btn px-5 '
+                  style={{ backgroundColor: '#583d72', color: 'white' }}
+                >
                   Signup
                 </button>
                 <br />
-                <p> Already have an account? <a href="/login">Signin</a></p>
+                <p>
+                  {' '}
+                  Already have an account? <a href='/login'>Signin</a>
+                </p>
                 <div>{errors}</div>
               </form>
             </div>

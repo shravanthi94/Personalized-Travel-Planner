@@ -1,8 +1,8 @@
 .form {
-    margin: 2rem;
-    padding: 1.5rem;
+  margin: 2rem;
+  padding: 1.5rem;
 }
 
-body{
-    background: radial-gradien(rgb(247, 247, 154), rgb(118, 241, 241) rgb(238, 180, 72))
+body {
+  background: radial-gradien(#f3d6bc, #fcb4aa, #a78395);
 }

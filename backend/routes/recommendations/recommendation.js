@@ -3,6 +3,12 @@ const router = express.Router();
 const Recommendation = require('../../models/RecommendationModel');
 const auth = require('../../middleware/auth');
 const PythonShell = require('python-shell').PythonShell;
+
+// /Users/rakshithasathyakumar/Desktop/shared_files
+// /Users/Chandu/Desktop/shared_files
+
+
+
 // const spacyNLP = require("spacy-nlp");
 // var serverPromise = spacyNLP.server({ port: process.env.IOPORT });
 
@@ -33,7 +39,7 @@ router.post('/view', auth, async (req, res) => {
     pythonPath: 'python3',
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
-    args: [req.body.freeTextInput]
+    args: [req.body.freeTextInput],
   };
 
   // console.log(req.body.freeTextInput)

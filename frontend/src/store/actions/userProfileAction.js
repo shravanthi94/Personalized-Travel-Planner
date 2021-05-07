@@ -1,4 +1,9 @@
-import { GET_USER_DETAILS, UPDATE_USER_DETAILS, VIEW_RECO } from './types';
+import {
+  GET_USER_DETAILS,
+  UPDATE_USER_DETAILS,
+  VIEW_RECO,
+  VIEW_ITIN,
+} from './types';
 import { BACKEND_URL } from '../../helpers/constants';
 import axios from 'axios';
 
@@ -41,10 +46,7 @@ export const updateUserDetails = (userProfileData) => (dispatch) => {
 
 export const viewRecommendation = (userInputData) => (dispatch) => {
   axios
-    .post(
-      `${BACKEND_URL}/recommendations/view`,
-      userInputData,
-    )
+    .post(`${BACKEND_URL}/recommendations/view`, userInputData)
     .then((response) =>
       dispatch({
         type: VIEW_RECO,
@@ -55,6 +57,34 @@ export const viewRecommendation = (userInputData) => (dispatch) => {
       if (error.response && error.response.data) {
         return dispatch({
           type: VIEW_RECO,
+          payload: error.response.data,
+        });
+      }
+      return;
+    });
+};
+
+export const viewItinerary = (poi, days, tripType) => (dispatch) => {
+  console.log('action called');
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ poi, days, tripType });
+  axios
+    .post(`${BACKEND_URL}/itinerary`, body, config)
+    .then((response) =>
+      dispatch({
+        type: VIEW_ITIN,
+        payload: response.data,
+      }),
+    )
+    .catch((error) => {
+      if (error.response && error.response.data) {
+        return dispatch({
+          type: VIEW_ITIN,
           payload: error.response.data,
         });
       }

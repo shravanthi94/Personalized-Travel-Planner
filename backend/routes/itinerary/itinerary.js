@@ -5,6 +5,7 @@ const Itinerary = require('../../models/ItineraryModel');
 
 var distance = require('google-distance-matrix');
 var solver = require('node-tspsolver');
+const PythonShell = require('python-shell').PythonShell;
 
 var origins = ['San Francisco CA', 'Los Angeles', 'Napa Valley', 'San Diego'];
 var destinations = [
@@ -18,22 +19,32 @@ distance.key('AIzaSyC9YmvT5MgBbbaBSoO0m_h9zGHHK9s_W2Y');
 distance.units('imperial');
 
 router.post('/', async (req, res) => {
+  var temp = req.body.tripType.substring(1, req.body.tripType.length - 1);
+  const nlp = temp.split(',');
 
+
+  for (var i = 0; i < nlp.length; i++) {
+    nlp[i] = nlp[i].replace(/'/g, '').trim();
+  }
+  // console.log(typeof(cleaned))
+  // console.log(typeof(parseInt(req.body.days)))
+  // console.log(typeof(req.body.poi))
   let options = {
     mode: 'text',
     pythonPath: 'python3',
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
-    args: [req.body.freeTextInput]
+    args: [parseInt(req.body.days), req.body.poi, nlp]
   };
-
-  // console.log(req.body.freeTextInput)
 
   PythonShell.run('POI_Nearby_Recc.py', options, function (err, results) {
     if (err) throw err;
-    console.log(results[0]);
-    res.end(results[0]);
+    console.log(results);
+    // res.end(results[0]);
    });
+
+
+  // console.log('Reached Itinerary');
   const matrix = [];
   
   try {
@@ -61,12 +72,13 @@ router.post('/', async (req, res) => {
           matrix.push(tempArr);
         }
       }
-      console.log('Result IN: ', matrix);
+      // console.log('Result IN: ', matrix);
+
       // Itinerary Generator
       solver
         .solveTsp(matrix, false, {})
         .then(function (result) {
-          console.log(result); // result is an array of indices specifying the route.
+          // console.log(result); // result is an array of indices specifying the route.
           const itin = [];
           for (var i = 0; i < result.length; i++) {
             var obj = {
@@ -78,7 +90,7 @@ router.post('/', async (req, res) => {
             }
             itin.push(obj);
           }
-          console.log(itin);
+          // console.log(itin);
           res.send(JSON.stringify(itin));
         })
         .catch((err) => {

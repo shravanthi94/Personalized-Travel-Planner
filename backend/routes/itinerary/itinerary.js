@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
   const matrix = [];
 
   try {
-    distance.matrix(origins, destinations, (err, distances) => {
+    distance.matrix(origins, destinations, async (err, distances) => {
       if (err) {
         return console.log(err);
       }

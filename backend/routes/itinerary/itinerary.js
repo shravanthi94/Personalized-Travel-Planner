@@ -20,12 +20,11 @@ router.post('/', async (req, res) => {
   for (var i = 0; i < nlp.length; i++) {
     nlp[i] = nlp[i].replace(/'/g, '').trim();
   }
-
   let options = {
     mode: 'text',
     pythonPath: 'python3',
     pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: '/Users/Chandu/Desktop/shared_files',
+    scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
     args: [parseInt(days), poi, nlp],
   };
 

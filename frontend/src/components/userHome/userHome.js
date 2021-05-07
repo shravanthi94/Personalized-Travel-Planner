@@ -40,7 +40,7 @@ class userHome extends Component {
                       populous in California
                     </p>
                     <a
-                      href='/signup'
+                      href='/sfItinerary'
                       class='btn '
                       style={{ backgroundColor: '#583d72', color: 'white' }}
                     >

@@ -9,6 +9,7 @@ import userProfile from './userProfile/userProfile';
 import profileUpdate from './userProfile/profileUpdate';
 import recommendation from './recommendations/recommendation';
 import itinerary from './itinerary/itinerary';
+import sfItinerary from './landingPage/sfDefault';
 
 import setAuthToken from '../helpers/setAuthToken';
 
@@ -29,6 +30,7 @@ class Main extends Component {
         <Route exact path='/profileUpdate' component={profileUpdate} />
         <Route exact path='/recommendations' component={recommendation} />
         <Route exact path='/itinerary' component={itinerary} />
+        <Route exact path='/sfItinerary' component={sfItinerary}/>
       </div>
     );
   }

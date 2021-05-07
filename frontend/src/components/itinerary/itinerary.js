@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import downArrow from '../images/downArrow.jpg';
 import img1 from '../images/img1.jpeg';
@@ -6,20 +6,29 @@ import img2 from '../images/img2.jpeg';
 import img3 from '../images/img3.jpeg';
 import img4 from '../images/img4.jpeg';
 import { Carousel } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { viewDayItinerary } from '../../store/actions/userProfileAction';
 
-const Itinerary = () => {
-  var results = [
-    'San Fran',
-    'Lombart Street',
-    'Twin Peaks',
-    'Girardelli',
-    'Pier 69',
-    'Golden Gate Bridge',
-  ];
+const Itinerary = ({ userProfile: { itin, dayItin }, viewDayItinerary }) => {
+  useEffect(() => {
+    viewDayItinerary(itin.slice(0, 4));
+  }, []);
+
+  var [results, setresults] = useState(dayItin);
+
+  //   var results = [
+  //     'San Fran',
+  //     'Lombart Street',
+  //     'Twin Peaks',
+  //     'Girardelli',
+  //     'Pier 69',
+  //     'Golden Gate Bridge',
+  //   ];
 
   const displayPlaces = () => {
     results.shift();
-    return results.map((city) => {
+    return results.map((value) => {
       return (
         <Fragment>
           <img
@@ -29,12 +38,14 @@ const Itinerary = () => {
             width='80px'
             style={{ marginLeft: '410px' }}
           />
-          <i class='fas fa-car fa-lg'></i> Travel 150 miles
+          <p className='d-inline'>
+            <i class='fas fa-car fa-lg'></i> Travel {value.distance} miles
+          </p>
           <div
             class='card ml-5 w-75'
             style={{ backgroundColor: 'mediumaquamarine', textAlign: 'center' }}
           >
-            <h5 class='card-header '>{city}</h5>
+            <h5 class='card-header '>{value.name}</h5>
           </div>
         </Fragment>
       );
@@ -99,4 +110,12 @@ const Itinerary = () => {
   );
 };
 
-export default Itinerary;
+Itinerary.propTypes = {
+  viewDayItinerary: PropTypes.func.isRequired,
+  userProfile: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  userProfile: state.userProfile,
+});
+
+export default connect(mapStateToProps, { viewDayItinerary })(Itinerary);

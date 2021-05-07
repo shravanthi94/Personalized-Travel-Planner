@@ -11,7 +11,10 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <nav
+          class='navbar navbar-expand-lg navbar-dark'
+          style={{ backgroundColor: '#583d72' }}
+        >
           <a class='navbar-brand' href='/home'>
             {/* <img src={logo} width='30' height='30' alt='' /> Trip It */}
             <i class='fas fa-route'></i> SmartVacay
@@ -39,6 +42,7 @@ class Navbar extends Component {
                 type='button'
                 id='dropdownMenuButton'
                 data-toggle='dropdown'
+                style={{ backgroundColor: '#9f5f80', color: 'white' }}
               >
                 <i class='far fa-user'></i>
               </button>

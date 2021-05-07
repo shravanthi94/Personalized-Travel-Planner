@@ -9,16 +9,33 @@ import { Carousel } from 'react-bootstrap';
 
 const sfItinerary = () => {
   var results = [
-    'Lombart Street',
-    'Twin Peaks',
-    'Girardelli',
-    'Pier 69',
-    'Golden Gate Bridge',
+      {
+          name: 'Golden Gate',
+          distance: 3.3
+      },
+      {
+        name: 'Crissy Field',
+        distance: 3.3
+      },
+      {
+          name: 'The Palace of Fine Arts',
+          distance: 1.1
+      },
+      {
+          name: 'Fisherman’s Wharf',
+          distance: 2.1
+      },
+      {
+          name: 'Lombard Street',
+          distance: 0.7
+      }
   ];
+
+
 
   const displayPlaces = () => {
     results.shift();
-    return results.map((city) => {
+    return results.map((val) => {
       return (
         <Fragment>
           <img
@@ -26,14 +43,17 @@ const sfItinerary = () => {
             alt='arr'
             height='80px'
             width='80px'
-            style={{ marginLeft: '410px' }}
+            style={{ marginLeft: '350px' }}
           />
-          <i class='fas fa-car fa-lg'></i> Travel 150 miles
+          <i class='fas fa-car fa-lg'></i> {val.distance} miles
           <div
             class='card ml-5 w-75'
-            style={{ backgroundColor: 'mediumaquamarine', textAlign: 'center' }}
+            style={{ backgroundColor: '#9f5f80',
+            textAlign: 'center',
+            color: 'white',
+        }}
           >
-            <h5 class='card-header '>{city}</h5>
+            <h5 class='card-header '>{val.name}</h5>
           </div>
         </Fragment>
       );
@@ -83,14 +103,31 @@ const sfItinerary = () => {
         </Carousel>
       </div>
       <div className='container align-middle mt-5'>
-        <h1 class='h1 mb-4'>ITINERARY</h1>
+      <h1 class='h1 mb-4 heading'>ITINERARY</h1>
+        <p className='quote' style={{ color: '#583d72' }}>
+          California, a western U.S. state, stretches from the Mexican border
+          along the Pacific for nearly 900 miles. Its terrain includes
+          cliff-lined beaches, redwood forest, the Sierra Nevada Mountains,
+          Central Valley farmland and the Mojave Desert. The city of Los Angeles
+          is the seat of the Hollywood entertainment industry. Hilly San
+          Francisco is known for the Golden Gate Bridge, Alcatraz Island and
+          cable cars.
+        </p>
+        <br />
+        <div style={{marginLeft: "175px"}}>
         <div
           class='card ml-5 w-75'
-          style={{ backgroundColor: 'mediumaquamarine', textAlign: 'center' }}
+          style={{ backgroundColor: '#9f5f80',
+          textAlign: 'center',
+          color: 'white'}}
         >
-          <h5 class='card-header'>{results[0]}</h5>
+          <h5 class='card-header'>{results[0].name}</h5>
+          </div>
         </div>
-        {displayPlaces()}
+        <div style={{marginLeft: "175px"}}>
+            {displayPlaces()}
+        </div>
+        
         <br />
         <br />
       </div>

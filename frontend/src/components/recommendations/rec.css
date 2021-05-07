@@ -1,0 +1,18 @@
+.heading {
+  font-family: 'Comic Sans MS';
+  text-align: center;
+  font-weight: bolder;
+}
+
+.quote {
+  font-family: 'Comic Sans MS';
+  font-weight: bolder;
+  font-size: larger;
+  color: #9f5f80;
+}
+
+.para {
+  font-size: small;
+  font-weight: bolder;
+  color: #9f5f80;
+}

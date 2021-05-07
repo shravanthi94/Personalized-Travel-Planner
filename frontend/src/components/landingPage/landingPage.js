@@ -21,13 +21,13 @@ class landingPage extends Component {
       <div>
         <div>
           <Button
-            href= "/"
+            href='/'
             style={{
               marginTop: '25px',
-              marginLeft: '10px',
-              backgroundColor: 'lightgrey',
+              marginLeft: '100px',
+              backgroundColor: '#583d72',
               border: 'none',
-              color: 'black',
+              color: 'white',
             }}
             variant='link'
           >
@@ -37,12 +37,10 @@ class landingPage extends Component {
             href='/login'
             style={{
               marginTop: '25px',
-              backgroundColor: 'lightgrey',
+              backgroundColor: '#583d72',
               marginRight: '10px',
               marginLeft: '1150px',
-              border: '1px solid black',
-              color: 'black',
-              borderRadius: '5px',
+              color: 'white',
             }}
           >
             {' '}
@@ -50,13 +48,12 @@ class landingPage extends Component {
           </Button>{' '}
           <Button
             href='/signup'
+            class='btn'
             style={{
               marginTop: '25px',
-              backgroundColor: 'lightgrey',
+              backgroundColor: '#583d72',
               marginRight: '10px',
-              color: 'black',
-              border: '1px solid black',
-              borderRadius: '5px',
+              color: 'white',
             }}
           >
             {' '}
@@ -85,7 +82,11 @@ class landingPage extends Component {
                     populous city in the United States, and the fourth most
                     populous in California
                   </p>
-                  <a href='/signup' class='btn btn-outline-success'>
+                  <a
+                    href='/signup'
+                    class='btn '
+                    style={{ backgroundColor: '#583d72', color: 'white' }}
+                  >
                     {' '}
                     View Itinerary{' '}
                   </a>
@@ -113,7 +114,11 @@ class landingPage extends Component {
                     Pictures, Universal and Warner Brothers offer
                     behind-the-scenes tours.
                   </p>
-                  <a href='/signup' class='btn btn-outline-success'>
+                  <a
+                    href='/signup'
+                    class='btn btn-light'
+                    style={{ backgroundColor: '#583d72', color: 'white' }}
+                  >
                     {' '}
                     View Itinerary{' '}
                   </a>
@@ -140,7 +145,11 @@ class landingPage extends Component {
                     is the site of the renowned San Diego Zoo, as well as
                     numerous art galleries, artist studios, museums and gardens.
                   </p>
-                  <a href='/signup' class='btn btn-outline-success'>
+                  <a
+                    href='/signup'
+                    class='btn '
+                    style={{ backgroundColor: '#583d72', color: 'white' }}
+                  >
                     {' '}
                     View Itinerary{' '}
                   </a>

@@ -4,8 +4,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import { viewItinerary } from '../../store/actions/userProfileAction';
+import './rec.css';
+import los_angeles from '../images/la.jpg';
+import santa_barbara from '../images/santa_barbara.jpg';
+import napa from '../images/napa.jpg';
 
-const Recommendation = ({ userProfile: { user: {places, tripType}}, viewItinerary }) => {
+const Recommendation = ({
+  userProfile: {
+    user: { places, tripType },
+  },
+  viewItinerary,
+}) => {
   let [selectedPoi, setselectedPoi] = useState('');
 
   const days = localStorage.getItem('noDays');
@@ -29,24 +38,41 @@ const Recommendation = ({ userProfile: { user: {places, tripType}}, viewItinerar
     for (var i = 0; i < cleaned.length; i++) {
       cleaned[i] = cleaned[i].replace(/'/g, '').trim();
     }
+
     return cleaned.map((poi) => {
       let substrings = poi.toLowerCase().split(' ');
       let imgName = substrings.join('_');
+
       console.log(imgName); // los_angeles
+
       return (
-        <div class='card px-2 mx-2' style={{ width: '18rem' }}>
-          <img
-            class='card-img-top'
-            src={`images/${poi.toLowerCase().split(' ').join('_')}.jpg`}
-            alt={poi.toLowerCase().split(' ').join('_')}
-          />
-          <div class='card-body'>
-            <h5 class='card-title' name='poi' value={poi}>
+        <div class='card w-75  mx-2' style={{ width: '18rem' }}>
+          {poi == 'Napa' ? (
+            <img class='card-img-top' src={napa} alt='img' />
+          ) : (
+            ''
+          )}
+          {poi == 'Los Angeles' ? (
+            <img class='card-img-top' src={los_angeles} alt='img' />
+          ) : (
+            ''
+          )}
+          {poi == 'Santa Barbara' ? (
+            <img class='card-img-top' src={santa_barbara} alt='img' />
+          ) : (
+            ''
+          )}
+          <div class='card-body px-2'>
+            <h5 class='card-title h3' name='poi' value={poi}>
               {poi}
             </h5>
-            <p class='card-text'>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            <p
+              class='card-text quote para'
+              style={{ color: '#583d72', fontSize: '14px' }}
+            >
+              As a destination, California has it all: culture, mountains,
+              beaches, wine, cities brimming with energy, national parks, and of
+              course, the Pacific Ocean.
             </p>
             <input
               className='d-inline'
@@ -61,6 +87,7 @@ const Recommendation = ({ userProfile: { user: {places, tripType}}, viewItinerar
             <button
               type='button'
               class='btn btn-primary btn-sm'
+              style={{ backgroundColor: '#583d72' }}
               onClick={(e) => handleSubmit(e)}
             >
               Generate Itinerary
@@ -82,19 +109,20 @@ const Recommendation = ({ userProfile: { user: {places, tripType}}, viewItinerar
   return (
     <Fragment>
       <Navbar />
-      <div className='container border p-3 my-5'>
-        <h1>Recommendations</h1>
+      <div className='container p-3 my-5'>
+        <h1 className='heading'>Recommendations</h1>
+        <p className='quote' style={{ color: '#583d72' }}>
+          From its famous coastline to its broad heartland and granite Sierra
+          peaks, the state of California offers something for everyone. So if
+          you’re looking to explore this beautiful city then you’re in the right
+          place.
+        </p>
         <div className='container mt-4'>
-          <div class='row'>
-            <div class='col'></div>
-            <div class='col-8'>
-              <div class='card-deck'>{displayPOI()}</div>
-            </div>
-            <div class='col'></div>
+          <div class='col-12'>
+            <div class='card-deck px-4'>{displayPOI()}</div>
           </div>
         </div>
       </div>
-      {/* <h1>Hello</h1> */}
     </Fragment>
   );
 };

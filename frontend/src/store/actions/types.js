@@ -3,3 +3,4 @@ export const UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS';
 export const UPDATE_PROFILEPIC = 'UPDATE_PROFILEPIC';
 export const VIEW_RECO = 'VIEW_RECO';
 export const VIEW_ITIN = 'VIEW_ITIN';
+export const VIEW_DAY_ITIN = 'VIEW_DAY_ITIN';

@@ -5,11 +5,13 @@ import {
   UPDATE_PROFILEPIC,
   VIEW_RECO,
   VIEW_ITIN,
+  VIEW_DAY_ITIN,
 } from '../actions/types';
 
 const initialState = {
   user: {},
-  itin: {},
+  itin: [],
+  dayItin: {},
   status: '',
 };
 
@@ -26,6 +28,8 @@ export default (state = initialState, action) => {
       return { ...state, user: action.payload };
     case VIEW_ITIN:
       return { ...state, itin: action.payload };
+    case VIEW_DAY_ITIN:
+      return { ...state, dayItin: action.payload };
     default:
       return state;
   }

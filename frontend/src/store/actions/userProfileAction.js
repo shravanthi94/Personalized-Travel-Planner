@@ -3,6 +3,7 @@ import {
   UPDATE_USER_DETAILS,
   VIEW_RECO,
   VIEW_ITIN,
+  VIEW_DAY_ITIN,
 } from './types';
 import { BACKEND_URL } from '../../helpers/constants';
 import axios from 'axios';
@@ -65,7 +66,6 @@ export const viewRecommendation = (userInputData) => (dispatch) => {
 };
 
 export const viewItinerary = (poi, days, tripType) => (dispatch) => {
-  console.log('action called');
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -85,6 +85,33 @@ export const viewItinerary = (poi, days, tripType) => (dispatch) => {
       if (error.response && error.response.data) {
         return dispatch({
           type: VIEW_ITIN,
+          payload: error.response.data,
+        });
+      }
+      return;
+    });
+};
+
+export const viewDayItinerary = (data) => (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ data });
+  axios
+    .post(`${BACKEND_URL}/itinerary/view`, body, config)
+    .then((response) =>
+      dispatch({
+        type: VIEW_DAY_ITIN,
+        payload: response.data,
+      }),
+    )
+    .catch((error) => {
+      if (error.response && error.response.data) {
+        return dispatch({
+          type: VIEW_DAY_ITIN,
           payload: error.response.data,
         });
       }

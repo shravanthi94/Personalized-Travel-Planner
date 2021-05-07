@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import downArrow from '../images/downArrow.jpg';
 import img1 from '../images/img1.jpeg';
@@ -6,20 +6,39 @@ import img2 from '../images/img2.jpeg';
 import img3 from '../images/img3.jpeg';
 import img4 from '../images/img4.jpeg';
 import { Carousel } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { viewDayItinerary } from '../../store/actions/userProfileAction';
+import './itin.css';
 
-const Itinerary = () => {
-  var results = [
-    'San Fran',
-    'Lombart Street',
-    'Twin Peaks',
-    'Girardelli',
-    'Pier 69',
-    'Golden Gate Bridge',
-  ];
+const Itinerary = ({ userProfile: { itin, dayItin }, viewDayItinerary }) => {
+  useEffect(() => {
+    console.log('Slice part: ', itin.slice(0, 4));
+    viewDayItinerary(itin.slice(0, 4));
+  }, [itin, viewDayItinerary]);
+
+  console.log('itin', itin);
+
+  var tempArr = [];
+  for (var i = 0; i < itin.length / 4; i++) {
+    tempArr[i] = i + 1;
+  }
+
+  var [results, setresults] = useState(dayItin);
+  var [buttonPressed, setbuttonPressed] = useState(false);
+
+  //   var results = [
+  //     'San Fran',
+  //     'Lombart Street',
+  //     'Twin Peaks',
+  //     'Girardelli',
+  //     'Pier 69',
+  //     'Golden Gate Bridge',
+  //   ];
 
   const displayPlaces = () => {
-    results.shift();
-    return results.map((city) => {
+    results = results.slice(1);
+    return results.map((value) => {
       return (
         <Fragment>
           <img
@@ -29,14 +48,53 @@ const Itinerary = () => {
             width='80px'
             style={{ marginLeft: '410px' }}
           />
-          <i class='fas fa-car fa-lg'></i> Travel 150 miles
+          <p className='d-inline'>
+            <i class='fas fa-car fa-lg'></i> Travel {value.distance} miles
+          </p>
           <div
             class='card ml-5 w-75'
-            style={{ backgroundColor: 'mediumaquamarine', textAlign: 'center' }}
+            style={{
+              backgroundColor: '#9f5f80',
+              textAlign: 'center',
+              color: 'white',
+            }}
           >
-            <h5 class='card-header '>{city}</h5>
+            <h5 class='card-header '>{value.name}</h5>
           </div>
         </Fragment>
+      );
+    });
+  };
+
+  const handleClick = (e, day) => {
+    if (day === 1) {
+      e.preventDefault();
+      setbuttonPressed(true);
+      viewDayItinerary(itin.slice(0, 4));
+      setresults(dayItin);
+    } else if (day === 2) {
+      e.preventDefault();
+      setbuttonPressed(true);
+      viewDayItinerary(itin.slice(4, 8));
+      setresults(dayItin);
+    } else if (day === 3) {
+      e.preventDefault();
+      setbuttonPressed(true);
+      viewDayItinerary(itin.slice(8, 12));
+      setresults(dayItin);
+    }
+  };
+
+  const displayButtons = () => {
+    return tempArr.map((each) => {
+      return (
+        <button
+          class='btn btn-primary mr-5 px-5'
+          style={{ backgroundColor: '#583d72', color: 'white' }}
+          onClick={(e) => handleClick(e, each)}
+        >
+          Day {each}
+        </button>
       );
     });
   };
@@ -84,14 +142,38 @@ const Itinerary = () => {
         </Carousel>
       </div>
       <div className='container align-middle mt-5'>
-        <h1 class='h1 mb-4'>ITINERARY</h1>
-        <div
-          class='card ml-5 w-75'
-          style={{ backgroundColor: 'mediumaquamarine', textAlign: 'center' }}
-        >
-          <h5 class='card-header'>{results[0]}</h5>
-        </div>
-        {displayPlaces()}
+        <h1 class='h1 mb-4 heading'>ITINERARY</h1>
+        <p className='quote' style={{ color: '#583d72' }}>
+          California, a western U.S. state, stretches from the Mexican border
+          along the Pacific for nearly 900 miles. Its terrain includes
+          cliff-lined beaches, redwood forest, the Sierra Nevada Mountains,
+          Central Valley farmland and the Mojave Desert. The city of Los Angeles
+          is the seat of the Hollywood entertainment industry. Hilly San
+          Francisco is known for the Golden Gate Bridge, Alcatraz Island and
+          cable cars.
+        </p>
+        <br />
+        <div style={{ marginLeft: '25%' }}>{displayButtons()}</div>
+        <br /> <br />
+        {buttonPressed == true ? (
+          <Fragment>
+            <div style={{ marginLeft: '12%' }} class='mb-4'>
+              <div
+                class='card ml-5 w-75'
+                style={{
+                  backgroundColor: '#9f5f80',
+                  textAlign: 'center',
+                  color: 'white',
+                }}
+              >
+                <h5 class='card-header'>{results[0].name}</h5>
+              </div>
+              {displayPlaces()}
+            </div>
+          </Fragment>
+        ) : (
+          ''
+        )}
         <br />
         <br />
       </div>
@@ -99,4 +181,12 @@ const Itinerary = () => {
   );
 };
 
-export default Itinerary;
+Itinerary.propTypes = {
+  viewDayItinerary: PropTypes.func.isRequired,
+  userProfile: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  userProfile: state.userProfile,
+});
+
+export default connect(mapStateToProps, { viewDayItinerary })(Itinerary);

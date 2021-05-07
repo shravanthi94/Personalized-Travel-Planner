@@ -68,8 +68,8 @@ class userProfile extends Component {
         <div>
           <div class='container-fluid'>
             <div class='row'>
-              <div class='col-3 pl-4' >
-                <div class='card mb-3' style={{backgroundColor: "burlywood"}}>
+              <div class='col-3 pl-4 ml-4'>
+                <div class='card mb-3' style={{ backgroundColor: '#FFEDDD' }}>
                   <div class='card-body text-center'>
                     <img
                       src={imgSrc}
@@ -78,7 +78,10 @@ class userProfile extends Component {
                       alt='profile-pic'
                     />
                     <label for='profileImage'>
-                      <a class='btn btn-secondary btn-sm btn-rounded'>
+                      <a
+                        class='btn btn-secondary btn-sm btn-rounded'
+                        style={{ backgroundColor: '#583d72', color: 'white' }}
+                      >
                         <i class='fas fa-camera'></i> Upload image...
                       </a>
                     </label>
@@ -91,7 +94,11 @@ class userProfile extends Component {
                       onChange={this.onImageChange}
                     ></input>
                     <br />
-                    <a class='btn btn-primary' onClick={this.handleImageUpload}>
+                    <a
+                      class='btn'
+                      onClick={this.handleImageUpload}
+                      style={{ backgroundColor: '#583d72', color: 'white' }}
+                    >
                       {' '}
                       Save
                     </a>{' '}
@@ -104,8 +111,9 @@ class userProfile extends Component {
                     <p> {this.props.user.phone}</p>
                     <a
                       href='/profileUpdate'
-                      class='btn btn-primary btn-md'
+                      class='btn btn-md'
                       role='button'
+                      style={{ backgroundColor: '#583d72', color: 'white' }}
                       aria-pressed='true'
                     >
                       Update Profile
@@ -113,24 +121,23 @@ class userProfile extends Component {
                   </div>
                 </div>
               </div>
-              <div class='col-9 px-6'>
+              <div class='col-8 pl-5 ml-5'>
                 <div
-                  class='jumbotron text-center mb-5'
-                  style={{backgroundColor: "burlywood"}}
-              
+                  class='jumbotron text-center mb-5 '
+                  style={{ backgroundColor: '#FFEDDD' }}
                 >
                   <h3 class='display-4'>View your saved Itineraries!!!</h3>
 
                   <hr class='my-4' />
                   <h5>Looking for some new places top explore??? </h5>
                   <a
-                      href='/gettingStarted'
-                      class='btn btn-primary btn-md'
-                      role='button'
-                      aria-pressed='true'
-                    >
-                      Get new itinerary
-                    </a>
+                    href='/gettingStarted'
+                    class='btn btn-md'
+                    role='button'
+                    style={{ backgroundColor: '#583d72', color: 'white' }}
+                  >
+                    Get new itinerary
+                  </a>
                 </div>
 
                 <div class='card-columns'>
@@ -142,13 +149,18 @@ class userProfile extends Component {
                     />
 
                     <div class='card-body p-2 position-relative'>
-                      <div class='text-center'>
-                        <strong class='d-block card-title mb-1'>
+                      <div class='text-center h4'>
+                        <strong class='d-block card-title mb-1 mt-1'>
                           {' '}
                           San Francisco
                         </strong>
                         <br />
-                        <button class='btn btn-primary'>View itinerary</button>
+                        <button
+                          class='btn mb-3'
+                          style={{ backgroundColor: '#583d72', color: 'white' }}
+                        >
+                          View itinerary
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -161,13 +173,18 @@ class userProfile extends Component {
                     />
 
                     <div class='card-body p-2 position-relative'>
-                      <div class='text-center'>
-                        <strong class='d-block card-title mb-1'>
+                      <div class='text-center h4'>
+                        <strong class='d-block card-title mb-1 mt-1'>
                           {' '}
                           Los Angeles
                         </strong>
                         <br />
-                        <button class='btn btn-primary'>View itinerary</button>
+                        <button
+                          class='btn mb-3'
+                          style={{ backgroundColor: '#583d72', color: 'white' }}
+                        >
+                          View itinerary
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -180,13 +197,18 @@ class userProfile extends Component {
                     />
 
                     <div class='card-body p-2 position-relative'>
-                      <div class='text-center'>
-                        <strong class='d-block card-title mb-1'>
+                      <div class='text-center h4'>
+                        <strong class='d-block card-title mb-1 mt-1'>
                           {' '}
                           San Diego
                         </strong>
                         <br />
-                        <button class='btn btn-primary'>View itinerary</button>
+                        <button
+                          class='btn mb-3'
+                          style={{ backgroundColor: '#583d72', color: 'white' }}
+                        >
+                          View itinerary
+                        </button>
                       </div>
                     </div>
                   </div>

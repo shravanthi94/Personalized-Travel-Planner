@@ -6,7 +6,7 @@ This is SmartVacay Web Application that allows users to register and plan their 
 
 #### NLP and Machine Learning
 
-1. Clone the "python_files" into a machine having Python3 installed on it.
+1. Clone the "shared_files" into a machine having Python3 installed on it.
 2. Use the command "pip install spacy" for spacy installation.
 3. Install other dependencies using "python -m spacy download en_core_web_lg" and "python -m spacy download en_core_web_sm" commands.
 4. Change the directory path on the file "NLP_and_Recc_functions.py" file of "ner" and "POI_TripTypes_count.csv" as saved on your system and save changes.

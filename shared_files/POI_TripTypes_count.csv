@@ -1,0 +1,41 @@
+Destination_name,Trip_type,Count
+Anaheim,Activities,2
+Anaheim,Adventurous,34
+Anaheim,Historic,4
+Anaheim,Relaxed,2
+Lake Tahoe,Activities,3
+Lake Tahoe,Adventurous,12
+Lake Tahoe,Historic,13
+Lake Tahoe,Relaxed,15
+Los Angeles,Activities,5
+Los Angeles,Adventurous,2
+Los Angeles,Historic,38
+Los Angeles,Relaxed,14
+Monterey,Activities,5
+Monterey,Adventurous,5
+Monterey,Historic,17
+Monterey,Relaxed,16
+Napa,Activities,5
+Napa,Adventurous,1
+Napa,Historic,2
+Napa,Relaxed,51
+Palm Springs,Activities,4
+Palm Springs,Adventurous,10
+Palm Springs,Historic,20
+Palm Springs,Relaxed,10
+San Diego,Activities,4
+San Diego,Adventurous,4
+San Diego,Historic,13
+San Diego,Relaxed,21
+San Francisco,Activities,2
+San Francisco,Adventurous,1
+San Francisco,Historic,17
+San Francisco,Relaxed,10
+Santa Barbara,Activities,9
+Santa Barbara,Adventurous,5
+Santa Barbara,Historic,19
+Santa Barbara,Relaxed,27
+Santa Monica,Activities,10
+Santa Monica,Adventurous,6
+Santa Monica,Historic,30
+Santa Monica,Relaxed,16

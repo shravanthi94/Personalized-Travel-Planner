@@ -36,7 +36,7 @@ router.post('/view', auth, async (req, res) => {
     mode: 'text',
     pythonPath: 'python3',
     pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: '/Users/rakshithasathyakumar/Desktop/shared_files',
+    scriptPath: '/Users/Chandu/Desktop/shared_files',
     args: [req.body.freeTextInput],
   };
 

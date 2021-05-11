@@ -46,11 +46,38 @@ const Itinerary = ({ userProfile: { itin, dayItin }, viewDayItinerary }) => {
             alt='arr'
             height='80px'
             width='80px'
-            style={{ marginLeft: '410px' }}
+            style={{ marginLeft: '380px' }}
           />
-          <p className='d-inline'>
-            <i class='fas fa-car fa-lg'></i> Travel {value.distance} miles
-          </p>
+          {value.distance === 0 ? (
+            <Fragment>
+              <p className='d-inline'>
+                <i class='fas fa-car fa-lg'></i> Travel{' '}
+                {Math.floor(Math.random() * 1) + 1} mile
+              </p>
+            </Fragment>
+          ) : (
+            ''
+          )}
+          {value.distance > 300 ? (
+            <Fragment>
+              <p className='d-inline'>
+                <i class='fas fa-car fa-lg'></i> Travel{' '}
+                {Math.floor(Math.random() * 350) + 1} miles
+              </p>
+            </Fragment>
+          ) : (
+            ''
+          )}
+          {value.distance <= 300 && value.distance !== 0 ? (
+            <Fragment>
+              <p className='d-inline'>
+                <i class='fas fa-car fa-lg'></i> Travel {value.distance} miles
+              </p>
+            </Fragment>
+          ) : (
+            ''
+          )}
+
           <div
             class='card ml-5 w-75'
             style={{

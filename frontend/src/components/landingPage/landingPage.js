@@ -24,7 +24,7 @@ class landingPage extends Component {
             href='/'
             style={{
               marginTop: '25px',
-              marginLeft: '100px',
+              marginLeft: '200px',
               backgroundColor: '#583d72',
               border: 'none',
               color: 'white',
@@ -57,7 +57,7 @@ class landingPage extends Component {
             }}
           >
             {' '}
-            SignUp{' '}
+            Signup{' '}
           </Button>
         </div>
         <div class='container-fluid d-flex justify-content-center'>

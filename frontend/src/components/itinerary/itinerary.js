@@ -117,7 +117,10 @@ const Itinerary = ({ userProfile: { itin, dayItin }, viewDayItinerary }) => {
       return (
         <button
           class='btn btn-primary mr-5 px-5'
-          style={{ backgroundColor: '#583d72', color: 'white' }}
+          style={{
+            backgroundColor: '#583d72',
+            color: 'white',
+          }}
           onClick={(e) => handleClick(e, each)}
         >
           Day {each}

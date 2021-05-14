@@ -30,7 +30,7 @@ class Main extends Component {
         <Route exact path='/profileUpdate' component={profileUpdate} />
         <Route exact path='/recommendations' component={recommendation} />
         <Route exact path='/itinerary' component={itinerary} />
-        <Route exact path='/sfItinerary' component={sfItinerary}/>
+        <Route exact path='/sfItinerary' component={sfItinerary} />
       </div>
     );
   }

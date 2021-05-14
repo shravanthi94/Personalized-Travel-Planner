@@ -8,6 +8,9 @@ import './rec.css';
 import los_angeles from '../images/la.jpg';
 import santa_barbara from '../images/santa_barbara.jpg';
 import napa from '../images/napa.jpg';
+import anaheim from '../images/anaheim.jpg';
+import palm from '../images/palm.jpg';
+import tahoe from '../images/tahoe.jpg';
 
 const Recommendation = ({
   userProfile: {
@@ -59,6 +62,21 @@ const Recommendation = ({
           )}
           {poi === 'Santa Barbara' ? (
             <img class='card-img-top' src={santa_barbara} alt='img' />
+          ) : (
+            ''
+          )}
+          {poi === 'Palm Springs' ? (
+            <img class='card-img-top' src={palm} alt='img' />
+          ) : (
+            ''
+          )}
+          {poi === 'Lake Tahoe' ? (
+            <img class='card-img-top' src={tahoe} alt='img' />
+          ) : (
+            ''
+          )}
+          {poi === 'Anaheim' ? (
+            <img class='card-img-top' src={anaheim} alt='img' />
           ) : (
             ''
           )}

@@ -58,17 +58,17 @@ const Itinerary = ({ userProfile: { itin, dayItin }, viewDayItinerary }) => {
           ) : (
             ''
           )}
-          {value.distance > 300 ? (
+          {value.distance > 100 ? (
             <Fragment>
               <p className='d-inline'>
                 <i class='fas fa-car fa-lg'></i> Travel{' '}
-                {Math.floor(Math.random() * 350) + 1} miles
+                {Math.floor(Math.random() * 3) + 1} miles
               </p>
             </Fragment>
           ) : (
             ''
           )}
-          {value.distance <= 300 && value.distance !== 0 ? (
+          {value.distance <= 100 && value.distance !== 0 ? (
             <Fragment>
               <p className='d-inline'>
                 <i class='fas fa-car fa-lg'></i> Travel {value.distance} miles
